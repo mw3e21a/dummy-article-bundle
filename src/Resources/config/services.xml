@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service id="mwil_dummy_article_bundle.mwil_dummy_article" class="Mwil\DummyArticleBundle\MwilDummyArticle" public="true">
+            <argument type="collection" />
+
+        </service>
+
+
+        <service id="mwil_dummy_article_bundle.mwil_word_provider" class="Mwil\DummyArticleBundle\MwilWordProvider">
+                <tag name="mwil_dummy_article_word_provider" />
+        </service>
+
+
+        <service id="mwil_dummy_article_bundle.controller.dummy_article_api_controller" class="Mwil\DummyArticleBundle\Controller\DummyArticleApiController" public="true">
+            <argument type="service" id="mwil_dummy_article_bundle.mwil_dummy_article" />
+            <argument type="service" id="event_dispatcher" on-invalid="null" />
+        </service>
+
+
+
+
+        <service id="Mwil\DummyArticleBundle\MwilDummyArticle" alias="mwil_dummy_article_bundle.mwil_dummy_article" public="false"/>
+
+        <service id="mwil_dummy_article_bundle.word_provider" alias="mwil_dummy_article_bundle.mwil_word_provider" public="false"/>
+
+
+    </services>
+</container>
